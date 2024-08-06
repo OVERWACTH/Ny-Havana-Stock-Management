@@ -15,7 +15,7 @@ Avant de commencer, assurez-vous d'avoir installé les outils suivants :
 - [Symfony CLI](https://symfony.com/download)
 - [Node.js et npm](https://nodejs.org/)
 
-### modifier le fichier php.ini
+### Modifier le fichier php.ini
 Trover cette ligne et enlever les points virgules : 
 extension=pdo_pgsql
 extension=pdo_sqlite
