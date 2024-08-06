@@ -34,7 +34,7 @@ cd Ny-Havana-Stock-Management
 ```sh
 composer install
 ```
-## commande
+## Commande
 
 ```sh
 composer require symfony/orm-pack
