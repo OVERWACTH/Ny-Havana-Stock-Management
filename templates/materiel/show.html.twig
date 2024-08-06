@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Materiel{% endblock %}
+
+{% block content %}
+    <h1>Materiel</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ materiel.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ materiel.name }}</td>
+            </tr>
+            <tr>
+                <th>DateAjout</th>
+                <td>{{ materiel.dateAjout ? materiel.dateAjout|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>SerialNumber</th>
+                <td>{{ materiel.serialNumber }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_materiel_edit', {'id': materiel.id}) }} btn btn-secondary">Modifier</a>
+
+    {{ include('materiel/_delete_form.html.twig') }}
+{% endblock %}

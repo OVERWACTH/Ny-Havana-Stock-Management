@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Reparation{% endblock %}
+
+{% block content %}
+    <h1>Edit Reparation</h1>
+
+    {{ include('reparation/_form.html.twig', {'button_label': 'Update'}) }}
+
+
+    {{ include('reparation/_delete_form.html.twig') }}
+{% endblock %}

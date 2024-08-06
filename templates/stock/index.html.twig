@@ -1,0 +1,31 @@
+{# templates/stock/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Stocks de Matériel{% endblock %}
+
+{% block content %}
+    <h1>Stocks de Matériel</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Quantité Disponible</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stock in stocks %}
+                <tr>
+                    <td>{{ stock.id }}</td>
+                    <td>{{ stock.name }}</td>
+                    <td>{{ stock.quantiteDisponible }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">Aucun stock disponible</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,18 @@
+{{ form_start(form) }}
+    {{ form_row(form.numeroCR) }}
+    {{ form_row(form.nomDemandeur) }}
+    {{ form_row(form.dateDemande) }}
+
+    <h3 class="mt-3">Matériels</h3>
+    <div id="crMateriels" data-prototype="{{ form_widget(form.crMateriels.vars.prototype)|e('html_attr') }}" data-index="{{ form.crMateriels|length }}">
+        {% for crMateriel in form.crMateriels %}
+            <div class="cr-materiel">
+                {{ form_widget(crMateriel) }}
+                <button type="button" class="remove-cr-materiel">Supprimer</button>
+            </div>
+        {% endfor %}
+    </div>
+    <button type="button" id="add-cr-materiel">Ajouter un matériel</button>
+
+    <button class="btn btn-success mt-3">{{ button_label|default('Envoyer') }}</button>
+{{ form_end(form) }}

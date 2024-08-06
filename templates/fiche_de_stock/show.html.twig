@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FicheDeStock{% endblock %}
+
+{% block content %}
+    <h1>Fiche De Stock</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ fiche_de_stock.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ fiche_de_stock.date ? fiche_de_stock.date|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Sortie</th>
+                <td>{{ fiche_de_stock.sortie }}</td>
+            </tr>
+            <tr>
+                <th>Stock</th>
+                <td>{{ fiche_de_stock.stock }}</td>
+            </tr>
+            <tr>
+                <th>RH</th>
+                <td>{{ fiche_de_stock.signatureRH }}</td>
+            </tr>
+            <tr>
+                <th>Demandeur</th>
+                <td>{{ fiche_de_stock.signatureDemandeur }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <a href="{{ path('app_fiche_de_stock_edit', {'id': fiche_de_stock.id}) }} btn btn-secondary">Modifier</a>
+
+    {{ include('fiche_de_stock/_delete_form.html.twig') }}
+{% endblock %}

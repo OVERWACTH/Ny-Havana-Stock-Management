@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reparation{% endblock %}
+
+{% block content %}
+    <h1>Reparation</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ reparation.id }}</td>
+            </tr>
+            <tr>
+                <th>DateAcqui</th>
+                <td>{{ reparation.dateAcqui ? reparation.dateAcqui|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateDebut</th>
+                <td>{{ reparation.dateDebut ? reparation.dateDebut|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Probleme</th>
+                <td>{{ reparation.probleme }}</td>
+            </tr>
+            <tr>
+                <th>DateFin</th>
+                <td>{{ reparation.dateFin ? reparation.dateFin|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Responsable</th>
+                <td>{{ reparation.responsable }}</td>
+            </tr>
+            <tr>
+                <th>DateLivraison</th>
+                <td>{{ reparation.dateLivraison ? reparation.dateLivraison|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Observation</th>
+                <td>{{ reparation.observation }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <a href="{{ path('app_reparation_edit', {'id': reparation.id}) }}">Modifier</a>
+
+    {{ include('reparation/_delete_form.html.twig') }}
+{% endblock %}

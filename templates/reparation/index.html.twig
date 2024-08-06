@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reparation Index{% endblock %}
+
+{% block content %}
+    <h1>Reparation Index</h1>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-tools me-1"></i>
+            Reparation Table
+        </div>
+        <div class="card-body">
+            <table id="datatablesSimple" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Date Acquisition</th>
+                        <th>Date Début</th>
+                        <th>Problème</th>
+                        <th>Date Fin</th>
+                        <th>Responsable</th>
+                        <th>Date Livraison</th>
+                        <th>Observation</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+               
+                <tbody>
+                    {% for reparation in reparations %}
+                        <tr>
+                            <td>{{ reparation.id }}</td>
+                            <td>{{ reparation.dateAcqui ? reparation.dateAcqui|date('Y-m-d H:i:s') : '' }}</td>
+                            <td>{{ reparation.dateDebut ? reparation.dateDebut|date('Y-m-d H:i:s') : '' }}</td>
+                            <td>{{ reparation.probleme }}</td>
+                            <td>{{ reparation.dateFin ? reparation.dateFin|date('Y-m-d H:i:s') : '' }}</td>
+                            <td>{{ reparation.responsable }}</td>
+                            <td>{{ reparation.dateLivraison ? reparation.dateLivraison|date('Y-m-d H:i:s') : '' }}</td>
+                            <td>{{ reparation.observation }}</td>
+                            <td>
+                                <a href="{{ path('app_reparation_show', {'id': reparation.id}) }}" class="btn btn-primary">Voir plus</a>
+                                <a href="{{ path('app_reparation_edit', {'id': reparation.id}) }}" class="btn btn-secondary">Modifier</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="9" class="text-center">No records found</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <a href="{{ path('app_reparation_new') }}" class="btn btn-success mt-3">Nouvelle réparation</a>
+{% endblock %}

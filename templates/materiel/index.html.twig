@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Materiel Index{% endblock %}
+
+{% block content %}
+    <h1>Materiel Index</h1>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Materiel Table
+        </div>
+        <div class="card-body">
+            <table id="datatablesSimple" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Date d'ajout</th>
+                        <th>SN</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+               
+                <tbody>
+                    {% for materiel in materiels %}
+                        <tr>
+                            <td>{{ materiel.id }}</td>
+                            <td>{{ materiel.name }}</td>
+                            <td>{{ materiel.dateAjout ? materiel.dateAjout|date('Y-m-d H:i:s') : '' }}</td>
+                            <td>{{ materiel.serialNumber }}</td>
+                            <td>
+                                <a href="{{ path('app_materiel_show', {'id': materiel.id}) }}" class="btn btn-primary ">Voir plus</a>
+                                <a href="{{ path('app_materiel_edit', {'id': materiel.id}) }}" class="btn btn-secondary">Modifier</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="5" class="text-center">No records found</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <a href="{{ path('app_materiel_new') }}" class="btn btn-success">Nouveau Materiel</a>
+    
+{% endblock %}

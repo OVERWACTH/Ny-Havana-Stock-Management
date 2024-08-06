@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau CR{% endblock %}
+
+{% block content %}
+    <h1>Nouveau CR</h1>
+
+    {{ include('cr/_form.html.twig') }}
+
+
+   <script>
+        function addRemoveButtons() {
+            document.querySelectorAll('.remove-cr-materiel').forEach(function(button) {
+                button.addEventListener('click', function() {
+                    button.parentElement.remove();
+                });
+            });
+        }
+
+        document.getElementById('add-cr-materiel').addEventListener('click', function() {
+            var collectionHolder = document.getElementById('crMateriels');
+            var prototype = collectionHolder.dataset.prototype;
+            var index = collectionHolder.dataset.index;
+
+            var newForm = prototype.replace(/__name__/g, index);
+            collectionHolder.dataset.index = parseInt(index) + 1;
+
+            var newFormElement = document.createElement('div');
+            newFormElement.classList.add('cr-materierl');
+            newFormElement.innerHTML = newForm + '<button type="button" class="remove-cr-materiel">Suprrprimer</button>';
+            collectionHolder.appendChild(newFormElement);
+
+            addRemoveButtons();
+        });
+
+        addRemoveButtons();
+    </script>
+{% endblock %}

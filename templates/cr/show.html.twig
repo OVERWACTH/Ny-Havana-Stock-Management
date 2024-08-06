@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CR{% endblock %}
+
+{% block content %}
+    <h1>CR</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ c_r.id }}</td>
+            </tr>
+            <tr>
+                <th>NumeroCR</th>
+                <td>{{ c_r.numeroCR }}</td>
+            </tr>
+            <tr>
+                <th>NomDemandeur</th>
+                <td>{{ c_r.nomDemandeur }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <a href="{{ path('app_c_r_edit', {'id': c_r.id}) }}  "class="btn btn-secondary">Modifier</a>
+
+{% endblock %}

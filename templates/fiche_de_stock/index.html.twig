@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FicheDeStock index{% endblock %}
+
+{% block content %}
+    <h1>Fiche De Stock index</h1>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Fiche De Stock Table
+        </div>
+        <div class="card-body">
+            <table id="datatablesSimple" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Date</th>
+                        <th>Sortie</th>
+                        <th>Stock</th>
+                        <th> RH</th>
+                        <th> Demandeur</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+               
+                <tbody>
+                    {% for fiche_de_stock in fiche_de_stocks %}
+                        <tr>
+                            <td>{{ fiche_de_stock.id }}</td>
+                            <td>{{ fiche_de_stock.date ? fiche_de_stock.date|date('Y-m-d H:i:s') : '' }}</td>
+                            <td>{{ fiche_de_stock.sortie }}</td>
+                            <td>{{ fiche_de_stock.stock }}</td>
+                            <td>{{ fiche_de_stock.signatureRH }}</td>
+                            <td>{{ fiche_de_stock.signatureDemandeur }}</td>
+                            <td>
+                                <a href="{{ path('app_fiche_de_stock_show', {'id': fiche_de_stock.id}) }}" class="btn btn-primary">Voir Plus</a>
+                                <a href="{{ path('app_fiche_de_stock_edit', {'id': fiche_de_stock.id}) }}" class="btn btn-secondary">Modifier</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="7" class="text-center">No records found</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <a href="{{ path('app_fiche_de_stock_new') }}" class="btn btn-success mt-3">Nouvelle opération</a>
+{% endblock %}

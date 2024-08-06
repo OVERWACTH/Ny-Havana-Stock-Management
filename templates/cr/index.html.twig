@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CR index{% endblock %}
+
+{% block content %}
+<h1>CR</h1>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        CR List
+    </div>
+    <div class="card-body">
+        <table id="datatablesSimple" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>NumeroCR</th>
+                    <th>Date demande</th>
+                    <th>Nom Demandeur</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for c_r in c_rs %}
+                <tr>
+                    <td>{{ c_r.id }}</td>
+                    <td>{{ c_r.numeroCR }}</td>
+                    <td>{{ c_r.dateDemande ? c_r.dateDemande|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>{{ c_r.nomDemandeur }}</td>
+                    <td>
+                        <a href="{{ path('app_c_r_show', {'id': c_r.id}) }}" class="btn btn-primary ">Voir plus</a>
+                        <a href="{{ path('app_c_r_edit', {'id': c_r.id}) }}" class="btn btn-secondary">Modifier</a>
+                        
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5" class="text-center">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ path('app_c_r_new') }}" class="btn btn-success mt-3">Demande de CR</a>
+    </div>
+</div>
+{% endblock %}

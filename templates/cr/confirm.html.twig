@@ -1,0 +1,16 @@
+{# templates/cr/confirm.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Confirmer la demande de CR</h1>
+
+    <form method="post">
+        <p>
+            Voulez-vous confirmer la demande de CR #{{ c_r.numeroCR }} de {{ c_r.nomDemandeur }} ?
+        </p>
+
+        <button type="submit">Confirmer</button>
+        <a href="{{ path('app_c_r_index') }}">Annuler</a>
+    </form>
+{% endblock %}
